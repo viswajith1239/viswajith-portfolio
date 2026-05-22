@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub,} from 'react-icons/fa';
 import { projects } from '../data/portfolioData';
 import { fadeIn, staggerContainer } from '../animations/variants';
 

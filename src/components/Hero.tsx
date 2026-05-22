@@ -13,17 +13,20 @@ export const Hero: React.FC = () => {
   const typingSpeed = 100;
 
   useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      setTypedText((prev) => prev + fullText.charAt(index));
-      index++;
-      if (index >= fullText.length) {
-        clearInterval(interval);
-      }
-    }, typingSpeed);
+  let index = 0;
 
-    return () => clearInterval(interval);
-  }, []);
+  const interval = setInterval(() => {
+    setTypedText(fullText.slice(0, index + 1));
+
+    index++;
+
+    if (index === fullText.length) {
+      clearInterval(interval);
+    }
+  }, typingSpeed);
+
+  return () => clearInterval(interval);
+}, []);
 
   const handleScrollToProjects = () => {
     const el = document.getElementById('projects');
@@ -73,7 +76,7 @@ export const Hero: React.FC = () => {
             variants={fadeIn('up', 0.3)}
             className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-slate-700 dark:text-gray-200"
           >
-            A <span className="text-violet-500 dark:text-violet-400 font-mono underline decoration-cyan-400 decoration-2 underline-offset-4">{developerInfo.role}</span>
+            A <span className="text-violet-500 dark:text-violet-400 font-mono underline decoration-cyan-400 decoration-2 underline-offset-4">{typedText}</span>
             <span className="animate-pulse text-violet-500">|</span>
           </motion.h2>
 
