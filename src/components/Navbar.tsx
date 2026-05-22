@@ -35,36 +35,58 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // const scrollToSection = (id: string) => {
+  //   setIsOpen(false);
+  //   const element = document.getElementById(id);
+  //   if (element) {
+  //     const offset = 80;
+  //     const bodyRect = document.body.getBoundingClientRect().top;
+  //     const elementRect = element.getBoundingClientRect().top;
+  //     const elementPosition = elementRect - bodyRect;
+  //     const offsetPosition = elementPosition - offset;
+
+  //     window.scrollTo({
+  //       top: offsetPosition,
+  //       behavior: 'smooth',
+  //     });
+  //   }
+  // };
+
   const scrollToSection = (id: string) => {
-    setIsOpen(false);
     const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
+
+    if (!element) return;
+
+    // Close mobile menu first
+    setIsOpen(false);
+
+    // Wait until menu animation completes
+    setTimeout(() => {
+      const navbarHeight = 80;
+
+      const y =
+        element.getBoundingClientRect().top +
+        window.pageYOffset -
+        navbarHeight;
 
       window.scrollTo({
-        top: offsetPosition,
+        top: y,
         behavior: 'smooth',
       });
-    }
+    }, 400); // increase timeout for mobile animation
   };
-
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
-          ? 'glass-navbar py-3 shadow-lg'
-          : 'bg-transparent py-5'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
+        ? 'glass-navbar py-3 shadow-lg'
+        : 'bg-transparent py-5'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-12">
           {/* Logo */}
           <div className="shrink-0 cursor-pointer" onClick={() => scrollToSection('home')}>
-            
+
           </div>
 
           {/* Desktop Nav Links */}
@@ -73,11 +95,10 @@ export const Navbar: React.FC = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className={`relative font-sans text-sm font-medium transition-colors duration-200 cursor-pointer py-1 ${
-                  activeSection === link.id
-                    ? 'text-violet-600 dark:text-violet-400 font-semibold'
-                    : 'text-slate-600 dark:text-gray-400 hover:text-violet-600 dark:hover:text-violet-400'
-                }`}
+                className={`relative font-sans text-sm font-medium transition-colors duration-200 cursor-pointer py-1 ${activeSection === link.id
+                  ? 'text-violet-600 dark:text-violet-400 font-semibold'
+                  : 'text-slate-600 dark:text-gray-400 hover:text-violet-600 dark:hover:text-violet-400'
+                  }`}
               >
                 {link.name}
                 {activeSection === link.id && (
@@ -109,7 +130,7 @@ export const Navbar: React.FC = () => {
             >
               {theme === 'dark' ? <FiSun size={18} /> : <FiMoon size={18} />}
             </button>
-            
+
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2.5 rounded-lg cursor-pointer transition-colors duration-200 text-slate-700 dark:text-gray-300 hover:bg-slate-200/50 dark:hover:bg-white/10"
@@ -128,6 +149,7 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.35 }}
             className="md:hidden glass-navbar overflow-hidden border-t border-slate-200/10 dark:border-white/5"
           >
             <div className="px-4 pt-2 pb-6 space-y-2">
@@ -135,11 +157,10 @@ export const Navbar: React.FC = () => {
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className={`block w-full text-left px-3 py-2.5 rounded-lg text-base font-medium transition-colors duration-200 cursor-pointer ${
-                    activeSection === link.id
-                      ? 'bg-violet-500/10 text-violet-600 dark:text-violet-400 font-semibold'
-                      : 'text-slate-700 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-violet-600 dark:hover:text-violet-400'
-                  }`}
+                  className={`block w-full text-left px-3 py-2.5 rounded-lg text-base font-medium transition-colors duration-200 cursor-pointer ${activeSection === link.id
+                    ? 'bg-violet-500/10 text-violet-600 dark:text-violet-400 font-semibold'
+                    : 'text-slate-700 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-violet-600 dark:hover:text-violet-400'
+                    }`}
                 >
                   {link.name}
                 </button>
