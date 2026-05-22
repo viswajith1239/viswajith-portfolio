@@ -95,9 +95,12 @@ export const skillCategories: SkillCategory[] = [
     title: "Other Tools & Tech",
     skills: [
       { name: "Git", level: 90, iconName: "FaGitAlt" },
-      { name: "Cloudinary", level: 80, iconName: "SiCloudinary" },
+      // { name: "Cloudinary", level: 80, iconName: "SiCloudinary" },
+      { name: "AWS", level: 80, iconName: "FaAws" },
       { name: "Razorpay", level: 75, iconName: "FaCreditCard" },
-      { name: "JWT Auth", level: 90, iconName: "SiJsonwebtokens" }
+      { name: "JWT Auth", level: 90, iconName: "SiJsonwebtokens" },
+      { name: "Socket.IO", level: 85, iconName: "SiSocketdotio" },
+      
     ]
   }
 ];

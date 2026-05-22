@@ -1,15 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaGitAlt, FaCreditCard } from 'react-icons/fa';
-import { 
-  SiTypescript, 
-  SiTailwindcss, 
-  SiRedux, 
-  SiExpress, 
-  SiMongodb, 
-  SiPostgresql, 
-  SiCloudinary, 
-  SiJsonwebtokens 
+import { FaReact, FaNodeJs, FaGitAlt, FaCreditCard, FaAws } from 'react-icons/fa';
+import {
+  SiTypescript,
+  SiTailwindcss,
+  SiRedux,
+  SiExpress,
+  SiMongodb,
+  SiPostgresql,
+  SiCloudinary,
+  SiJsonwebtokens,
+  SiSocketdotio
 } from 'react-icons/si';
 import { skillCategories } from '../data/portfolioData';
 import { fadeIn, staggerContainer } from '../animations/variants';
@@ -28,16 +29,18 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; size?: n
   SiCloudinary,
   FaCreditCard,
   SiJsonwebtokens,
+  FaAws,
+  SiSocketdotio
 };
 
 export const Skills: React.FC = () => {
   return (
     <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         {/* Section Title */}
         <div className="text-center mb-16">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -46,7 +49,7 @@ export const Skills: React.FC = () => {
           >
             My <span className="bg-linear-to-r from-violet-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Skills</span>
           </motion.h2>
-          <motion.div 
+          <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: '80px' }}
             viewport={{ once: true }}
@@ -56,7 +59,7 @@ export const Skills: React.FC = () => {
         </div>
 
         {/* Categories Grid */}
-        <motion.div 
+        <motion.div
           variants={staggerContainer(0.2, 0.1)}
           initial="hidden"
           whileInView="show"
