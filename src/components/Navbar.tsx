@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
-import { useTheme } from '../hooks/useTheme';
+import {  FiMenu, FiX } from 'react-icons/fi';
+// import { useTheme } from '../hooks/useTheme';
 import { useScrollActive } from '../hooks/useScrollActive';
 
 export const Navbar: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
+  // const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -123,13 +123,13 @@ export const Navbar: React.FC = () => {
 
           {/* Mobile menu and theme toggle buttons */}
           <div className="flex md:hidden items-center space-x-2">
-            <button
+            {/* <button
               onClick={toggleTheme}
               className="p-2.5 rounded-full cursor-pointer transition-colors duration-200 text-slate-700 dark:text-gray-300 hover:bg-slate-200/50 dark:hover:bg-white/10"
               aria-label="Toggle Theme"
             >
               {theme === 'dark' ? <FiSun size={18} /> : <FiMoon size={18} />}
-            </button>
+            </button> */}
 
             <button
               onClick={() => setIsOpen(!isOpen)}
