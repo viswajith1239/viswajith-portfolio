@@ -7,10 +7,10 @@ export const Experience: React.FC = () => {
   return (
     <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-4xl mx-auto relative z-10">
-        
+
         {/* Section Title */}
         <div className="text-center mb-16">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -19,7 +19,7 @@ export const Experience: React.FC = () => {
           >
             History & <span className="bg-linear-to-r from-violet-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Education</span>
           </motion.h2>
-          <motion.div 
+          <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: '80px' }}
             viewport={{ once: true }}
@@ -61,9 +61,14 @@ export const Experience: React.FC = () => {
                     </span>
                   </div>
 
-                  <h4 className="text-sm font-semibold text-cyan-600 dark:text-cyan-400 tracking-wide uppercase mb-4">
+                  <a
+                    href={item.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-semibold text-cyan-600 dark:text-cyan-400 tracking-wide uppercase mb-4 inline-block hover:underline"
+                  >
                     {item.companyOrInstitution}
-                  </h4>
+                  </a>
 
                   <p className="text-slate-500 dark:text-gray-400 text-sm sm:text-base font-sans leading-relaxed">
                     {item.description}

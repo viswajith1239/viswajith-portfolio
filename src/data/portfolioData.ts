@@ -31,6 +31,7 @@ export interface TimelineItem {
   period: string;
   description: string;
   type: 'experience' | 'education';
+  website?: string;
 }
 
 export interface Service {
@@ -205,6 +206,7 @@ export const timelineItems: TimelineItem[] = [
     id: "t1",
     role: "MERN Stack Developer ",
     companyOrInstitution: "Datametron India Private Limited, Bangalore",
+    website:"https://datametron.com",
     period: "2025 - Present",
     description: "Developing and maintaining scalable full-stack web applications using the MERN stack, implementing secure authentication systems, optimizing APIs and database queries, and collaborating with cross-functional teams to deliver high-quality software solutions.",
     type: "experience"
@@ -213,6 +215,7 @@ export const timelineItems: TimelineItem[] = [
     id: "t2",
     role: "NODEJS Developer (Internship)",
     companyOrInstitution: "Fegno Technologies, Ernakulam",
+    website:"https://www.fegno.com",
     period: "2025 - 2025",
     description: "Worked on a full-stack HRMS application during the internship, contributed to frontend and backend development, gained hands-on experience with Docker, participated in Agile stand-up meetings, and assisted in API development and database integration.",
     type: "experience"
